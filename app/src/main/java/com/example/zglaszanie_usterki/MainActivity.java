@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner spCategory;
     EditText etDescription, etPriority;
-    Button btnNext;
+    Button btnNext, btnAbout;
 
     ActivityResultLauncher<Intent> launcher;
 
@@ -34,22 +34,17 @@ public class MainActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         etPriority = findViewById(R.id.etPriority);
         btnNext = findViewById(R.id.btnNext);
+        btnAbout = findViewById(R.id.btnAbout);
 
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == RESULT_OK) {
-                        Toast.makeText(
-                                this,
-                                "Zgloszenie zostalo przyjete",
-                                Toast.LENGTH_LONG
-                        ).show();
+                        Toast.makeText(this, "Zgloszenie przyjete",
+                                Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(
-                                this,
-                                "Zrezygnowano ze zgloszenia",
-                                Toast.LENGTH_SHORT
-                        ).show();
+                        Toast.makeText(this, "Zrezygnowano ze zgloszenia",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -88,14 +83,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Intent intent = new Intent(MainActivity.this, SummaryActivity.class);
-
-            intent.putExtra(EXTRA_CATEGORY,
-                    spCategory.getSelectedItem().toString());
-
+            intent.putExtra(EXTRA_CATEGORY, spCategory.getSelectedItem().toString());
             intent.putExtra(EXTRA_DESCRIPTION, description);
             intent.putExtra(EXTRA_PRIORITY, priority);
 
             launcher.launch(intent);
+        });
+
+        btnAbout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
         });
     }
 }
