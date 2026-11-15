@@ -3,9 +3,9 @@ package com.example.zglaszanie_usterki;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +19,8 @@ public class SummaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("CYKL_ZYCIA", "SummaryActivity onCreate");
+
         setContentView(R.layout.activity_summary);
 
         tvSummary = findViewById(R.id.tvSummary);
@@ -51,8 +53,19 @@ public class SummaryActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_TEXT, summary);
-
             startActivity(Intent.createChooser(intent, "Udostepnij zgloszenie"));
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("CYKL_ZYCIA", "SummaryActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("CYKL_ZYCIA", "SummaryActivity onDestroy");
     }
 }

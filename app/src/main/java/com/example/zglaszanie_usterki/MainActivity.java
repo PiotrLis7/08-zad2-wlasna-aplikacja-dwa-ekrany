@@ -3,6 +3,7 @@ package com.example.zglaszanie_usterki;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("CYKL_ZYCIA", "MainActivity onCreate");
+
         setContentView(R.layout.activity_main);
 
         spCategory = findViewById(R.id.spCategory);
@@ -94,5 +97,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("CYKL_ZYCIA", "MainActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("CYKL_ZYCIA", "MainActivity onDestroy");
     }
 }
