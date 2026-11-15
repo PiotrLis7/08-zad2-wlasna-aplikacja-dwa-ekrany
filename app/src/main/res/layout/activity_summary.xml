@@ -20,4 +20,18 @@
         android:textSize="18sp"
         android:layout_marginTop="25dp" />
 
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POTWIERDZ" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REZYGNUJ" />
+
+
 </LinearLayout>

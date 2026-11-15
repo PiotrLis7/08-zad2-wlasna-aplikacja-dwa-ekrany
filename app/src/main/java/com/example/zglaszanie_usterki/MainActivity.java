@@ -7,7 +7,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Spinner spCategory;
     EditText etDescription, etPriority;
     Button btnNext;
+
+    ActivityResultLauncher<Intent> launcher;
 
     public static final String EXTRA_CATEGORY = "CATEGORY";
     public static final String EXTRA_DESCRIPTION = "DESCRIPTION";
@@ -29,6 +34,25 @@ public class MainActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         etPriority = findViewById(R.id.etPriority);
         btnNext = findViewById(R.id.btnNext);
+
+        launcher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Toast.makeText(
+                                this,
+                                "Zgloszenie zostalo przyjete",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    } else {
+                        Toast.makeText(
+                                this,
+                                "Zrezygnowano ze zgloszenia",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                }
+        );
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
@@ -71,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_DESCRIPTION, description);
             intent.putExtra(EXTRA_PRIORITY, priority);
 
-            startActivity(intent);
+            launcher.launch(intent);
         });
     }
 }
