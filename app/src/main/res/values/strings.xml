@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Zgloszenie usterki</string>
+
+    <string name="title_form">Zgloszenie usterki</string>
+    <string name="label_category">Kategoria usterki</string>
+    <string name="label_description">Opis problemu</string>
+    <string name="label_priority">Priorytet (1-5)</string>
+    <string name="urgent">Pilne zgloszenie</string>
+    <string name="btn_next">DALEJ</string>
+
+    <string name="title_summary">Podsumowanie zgloszenia</string>
+    <string name="btn_confirm">POTWIERDZ</string>
+    <string name="btn_edit">POPRAW DANE</string>
+    <string name="btn_share">UDOSTEPNIJ</string>
+
+    <string name="error_category">Wybierz kategorie</string>
+    <string name="error_description">Wpisz opis problemu</string>
+    <string name="registered">Zgloszenie przyjete. Numer: %1$s</string>
+    <string name="cancelled">Zrezygnowano z wyslania zgloszenia</string>
+    <string name="share_via">Udostepnij zgloszenie</string>
+    <string name="error_no_app">Brak aplikacji do udostepniania</string>
+
+    <string-array name="categories">
+        <item>Komputer</item>
+        <item>Internet</item>
+        <item>Drukarka</item>
+        <item>Inne</item>
+    </string-array>
+</resources>
