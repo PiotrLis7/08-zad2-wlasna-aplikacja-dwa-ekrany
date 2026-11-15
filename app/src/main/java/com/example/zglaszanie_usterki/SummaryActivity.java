@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SummaryActivity extends AppCompatActivity {
 
     TextView tvSummary;
-    Button btnConfirm, btnCancel;
+    Button btnConfirm, btnCancel, btnShare;
+
+    String summary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +24,13 @@ public class SummaryActivity extends AppCompatActivity {
         tvSummary = findViewById(R.id.tvSummary);
         btnConfirm = findViewById(R.id.btnConfirm);
         btnCancel = findViewById(R.id.btnCancel);
+        btnShare = findViewById(R.id.btnShare);
 
         String category = getIntent().getStringExtra(MainActivity.EXTRA_CATEGORY);
         String description = getIntent().getStringExtra(MainActivity.EXTRA_DESCRIPTION);
         int priority = getIntent().getIntExtra(MainActivity.EXTRA_PRIORITY, 1);
 
-        String summary = "Kategoria: " + category + "\n\n"
+        summary = "Kategoria: " + category + "\n\n"
                 + "Opis: " + description + "\n\n"
                 + "Priorytet: " + priority;
 
@@ -41,6 +45,14 @@ public class SummaryActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(v -> {
             setResult(RESULT_CANCELED);
             finish();
+        });
+
+        btnShare.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, summary);
+
+            startActivity(Intent.createChooser(intent, "Udostepnij zgloszenie"));
         });
     }
 }

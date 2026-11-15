@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,10 +16,8 @@
         android:id="@+id/tvSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tutaj pojawi sie podsumowanie"
         android:textSize="18sp"
         android:layout_marginTop="25dp" />
-
 
     <Button
         android:id="@+id/btnConfirm"
@@ -33,5 +31,10 @@
         android:layout_height="wrap_content"
         android:text="REZYGNUJ" />
 
+    <Button
+        android:id="@+id/btnShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UDOSTEPNIJ" />
 
 </LinearLayout>
